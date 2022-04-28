@@ -1,0 +1,146 @@
+
+:root {
+  --ColorBorder1: #959595;
+  --ColorBorder: #616161;
+  --DayBackground: #232323;
+  --Background:#131313;
+  --Color1: #FFA91F;
+  --Color2: #74dfef;
+  --Color3: #ff381b;
+}
+
+.days-container {
+  background-color: var(--DayBackground);
+  height:100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+
+.days-container .day-div {
+  background-color: var(--Background);
+  font-size: 18px;
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-style:solid;
+  border-width: 0px;
+  border-color: var(--ColorBorder);
+}
+
+.days-container .day-div .Day {
+  color: var(--Color2);
+  font-size: 16px;
+  margin-bottom: 2px;
+  margin-left: 3px;
+}
+
+.days-container .day-div .icon {
+  color: var(--Color1);
+  display: inline-block;
+}
+
+.days-container .day-div .Day-icon {
+  color: var(--Color2);
+  font-size: 16px;
+  margin-bottom: 2px;
+  margin-left: 3px;
+}
+
+.days-container .day-div .Day-icon .icon-close {
+  font-size: 30px;
+  float: right;
+  margin-right: 20px;
+  margin-top: 0px;
+}
+
+.days-container .day-div .Name {
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  margin-left: 16px;
+}
+
+.days-container .day-div .excName {
+  color: var(--Color3);
+  text-decoration: line-through;
+  font-size: 19px;
+  margin-left: 16px;
+  font-size: 20px;
+}
+
+.right-date{
+  float : right;
+  color:var(--ColorBorder);
+  margin-right: 20px;
+}
+
+.days-container .day-div .line .btn-save{
+  background-color: var(--Background);
+  color: white;
+  font-size: 18px;
+  font: bold;
+  margin-right: 20px;
+  margin-top: 15px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-bottom: 4px;
+  float: right;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color:  white;
+
+}
+
+.days-container .day-div .line .NamePicker {
+  width: 140px;
+  font-size: 22px;
+  background-color: var(--Background);
+  color: white;
+  margin-top: 3px;
+  margin-left: 12px;
+  border-style:solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-width: 1px;
+  border-color: var(--ColorBorder);
+}
+
+.days-container .day-div .line .NamePickerExc {
+  width: 140px;
+  font-size: 22px;
+  background-color: var(--Background);
+  color: white;
+  margin-top: 6px;
+  margin-left: 9px;
+  border-style:solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: var(--ColorBorder);
+}
+
+.days-container .day-div .line .exc-icon {
+  margin-top: 8px;
+  margin-left: 9px;
+  margin-bottom: 3px;
+  vertical-align: middle;
+  font-size: 26px;
+  color: white;
+}
+
+.days-container .day-div .line .icon-notbooked {
+  margin-left: 7px;
+  font-size: 16px;
+  font-style: bold;
+  color: rgb(65, 64, 64);
+}
