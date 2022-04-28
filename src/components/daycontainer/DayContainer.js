@@ -45,7 +45,7 @@ function DayContainer(props) {
         }
         console.log(show);
 
-        Axios.get("http://localhost:3001/getWeek").then((response) => {
+        Axios.get("https://speedyapp.herokuapp.com/getWeek").then((response) => {
             response.data.map( record => {
                 for(let k=0;k<show.length;k++){
                     if(record.day === show[k]){
@@ -68,7 +68,7 @@ function DayContainer(props) {
         newday.setDate(newday.getDate() + index);
         let textDay=newday.toLocaleDateString();
         
-        Axios.post("http://localhost:3001/UpdateOrAdd",{
+        Axios.post("https://speedyapp.herokuapp.com/UpdateOrAdd",{
             day:textDay,
             first_name:first,
             second_name:second,
