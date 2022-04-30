@@ -32,7 +32,7 @@ function Day(props) {
     }
     
     if((exc!==first && exc !==second)||exc === "")
-      props.onClick(props.index,first,second,exc);
+      props.onClick(props.day,first,second,exc);
     else
       alert("Attention! the excluded name must be different from the working ones");
 
@@ -48,7 +48,7 @@ function Day(props) {
               <p className='Day'>
                 {props.dayText}
                 <span className="right-date">
-                  {props.day}
+                  {props.day.toLocaleDateString('en-US')}
                 </span>
                 </p>
               </div>

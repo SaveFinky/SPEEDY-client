@@ -40,7 +40,7 @@ function DayContainer(props) {
         var show = [];
         let day = new Date(start);
         for(let j=0;j<7;j++){
-            show[j]=day.toLocaleDateString();
+            show[j]=day.toLocaleDateString('en-US');
             day.setDate(day.getDate()+1);
             
         }
@@ -63,10 +63,9 @@ function DayContainer(props) {
         });
     }
     
-    function addDay(index,first,second,excname){
-        let newday=new Date(selected);
-        newday.setDate(newday.getDate() + index);
-        let textDay=newday.toLocaleDateString();
+    function addDay(day,first,second,excname){
+        
+        let textDay=day.toLocaleDateString('en-US');
         
         Axios.post("https://speedyapp.herokuapp.com/UpdateOrAdd",{
             day:textDay,
@@ -90,7 +89,7 @@ function DayContainer(props) {
                 <Day  
                     key={day.id}
                     dayText={DAY[day.id]}
-                    day={day.day.toLocaleDateString()}
+                    day={day.day}
                     index={day.id}
                     firstname={day.firstname}
                     secondname={day.secondname}
