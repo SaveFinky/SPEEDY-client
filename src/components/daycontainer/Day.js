@@ -24,8 +24,12 @@ function Day(props) {
     let s = document.getElementById("secondN");
     let second = s.options[s.selectedIndex].text;
 
-    let e = document.getElementById("excN");
-    let exc = e.options[e.selectedIndex].text;
+    let e ;
+    let exc ="";
+    if(selectexc === true|| !(excname===""||excname===undefined)){
+      e = document.getElementById("excN");
+      exc = e.options[e.selectedIndex].text;
+    }
     
     if((exc!==first && exc !==second)||exc === "")
       props.onClick(props.index,first,second,exc);
@@ -78,7 +82,6 @@ function Day(props) {
                   />
               </div>
 
-              <form >
                 <div className="line">
                   <select 
                     id="firstN"
@@ -121,18 +124,17 @@ function Day(props) {
                       (selectexc === true|| !(excname===""||excname===undefined)) && 
                       
                       <select 
-                      id="excN"
-                      className="NamePickerExc" 
-                      >
-                        <option value="DEFAULT" disabled selected hidden>{excname}</option>
-                        <option value="" ></option>
-                        {names.map(name =>
-                          <option key={name} value={name}>{name}</option>
-                        )};
+                        id="excN"
+                        className="NamePickerExc" 
+                        >
+                          <option value="DEFAULT" disabled selected hidden>{excname}</option>
+                          <option value="" ></option>
+                          {names.map(name =>
+                            <option key={name} value={name}>{name}</option>
+                          )};
                     </select>
                     }
                 </div>
-              </form>
             </div>
           }
       </div> 

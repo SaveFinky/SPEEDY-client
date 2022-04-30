@@ -42,8 +42,8 @@ function DayContainer(props) {
         for(let j=0;j<7;j++){
             show[j]=day.toLocaleDateString();
             day.setDate(day.getDate()+1);
+            
         }
-        console.log(show);
 
         Axios.get("https://speedyapp.herokuapp.com/getWeek").then((response) => {
             response.data.map( record => {

@@ -6,7 +6,9 @@ import Home from './components/pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
+
   return (
+    
     <div className="App">
       <Router>
         <Navbar />
@@ -19,3 +21,4 @@ function App() {
 }
 
 export default App;
+

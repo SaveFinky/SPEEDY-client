@@ -13,6 +13,7 @@ ReactDOM.render(
 );*/
 
 const container = document.getElementById('root');
+      document.title = "SPEEDY App";
 const root = createRoot(container);
 root.render(
 <React.StrictMode>

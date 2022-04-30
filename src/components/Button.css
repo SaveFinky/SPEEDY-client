@@ -3,7 +3,7 @@
 }
 
 .btn {
-  padding: 8px 20px;
+  padding: 0.8vh 0.7vh;
   border-radius: 2px;
   outline: none;
   border: none;
@@ -19,7 +19,6 @@
 .btn--outline {
   background-color: #141414;
   color: #fff;
-  padding: 8px 20px;
   border: 1px solid #616161;
   transition: all 0.3s ease-out;
 }

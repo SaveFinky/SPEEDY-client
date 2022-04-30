@@ -15,10 +15,10 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 2px;
+  padding-left: 4vh;
+  padding-right: 4vh;
+  padding-top: 1vh;
+  padding-bottom: 0.2vh;
 }
 
 .days-container .day-div {
@@ -128,6 +128,7 @@
   border-left: none;
   border-color: var(--ColorBorder);
 }
+
 
 .days-container .day-div .line .exc-icon {
   margin-top: 8px;

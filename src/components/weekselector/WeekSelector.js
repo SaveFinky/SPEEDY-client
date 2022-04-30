@@ -119,14 +119,19 @@ class WeekSelector extends Component{
          return (
             <div className='main-page'>
                 <div className='week-container'>
-                    <i className="arrow left" onClick={this.prevMonth.bind(this)}></i>
+                    <div className='ar-con-left'>
+                        <i className="arrow left" onClick={this.prevMonth.bind(this)}></i>
+                    </div>
                     <Week  
                         week={this.state.weeks[0]}
                         onClick={this.selectDay.bind(this)}
                     />
-                    <i className="arrow right" onClick={this.nextMonth.bind(this)}></i>
+                    <div className='ar-con-right'>
+                        <i className="arrow right" onClick={this.nextMonth.bind(this)}></i>
+                    </div>
+                    
+                    
                 </div>
-                <hr className='foot'></hr>
                 <hr className='foot'></hr>
                 <DayContainer 
                     days={{id:1,day:(new Date()),firstname:"",secondname:""}}
@@ -140,6 +145,5 @@ class WeekSelector extends Component{
 }
 
 export default WeekSelector;
-
 
 
