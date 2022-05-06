@@ -10,6 +10,8 @@
   height: var(--main-pageweekHeight);
   display: flex;
   flex-wrap: wrap;
+  position: sticky;
+  top: 110px;
 }
 .week-container >* {
   flex: 1 1 auto;
@@ -68,4 +70,12 @@ hr{
   color: #050505;
   margin: 0px 10px;
   border-radius: 4px;
+}
+
+@media screen and (max-width: 960px) {
+  .week-container {
+    position: sticky;
+    top: 50px;
+  }
+
 }
