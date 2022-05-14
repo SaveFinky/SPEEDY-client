@@ -67,7 +67,7 @@ function Nameselector(){
 
     function deleteName(name) {
         deleteNameFromAPI(name);
-        setAdd(false);
+        setDel(false);
         setDisplay(true);
     }
 
