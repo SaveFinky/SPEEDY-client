@@ -14,6 +14,7 @@
   height:100%;
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding-left: 4vh;
   padding-right: 4vh;
@@ -26,6 +27,7 @@
   font-size: 18px;
   height: 100%;
   width: 100%;
+  max-width: 113vh;
   padding-top: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -97,7 +99,6 @@
   border-radius: 6px;
   border-width: 1px;
   border-color:  white;
-
 }
 
 .days-container .day-div .line .NamePicker {
@@ -144,4 +145,13 @@
   font-size: 16px;
   font-style: bold;
   color: rgb(65, 64, 64);
+}
+
+
+@media screen and (max-width: 960px) {
+  
+  .days-container .day-div {
+    max-width: none;
+  }
+
 }

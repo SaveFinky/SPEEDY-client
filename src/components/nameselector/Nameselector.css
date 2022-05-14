@@ -1,0 +1,169 @@
+
+:root {
+    --ColorBorder1: #959595;
+    --ColorBorder: #616161;
+    --DayBackground: #232323;
+    --Background:#131313;
+    --Color1: #FFA91F;
+    --Color2: #74dfef;
+    --Color3: #ff381b;
+  }
+
+  .main-container {
+    background-color: var(--DayBackground);
+    color: white;
+    padding: 10px 0px;
+    min-height: 60vh;
+  }
+
+  .main-container > p{
+    font-weight: bold;
+    font-size: 23px;
+    margin-top: 1vh;
+    margin-left: 5vh;
+    margin-bottom: 2vh;
+  }
+
+  .main-container .name-container{
+    margin: 10px 30px;
+  }
+
+ .name-div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+ .name{
+    background-color: var(--Background);
+    margin: 7px;
+    padding: 12px 16px;
+    width: 32vh;
+    border-radius: 8px;
+    font-size: 22px;
+  }
+
+  .delete-div{
+    color: var(--Color3);
+    font-size: 26px;
+    padding: 4px;
+  }
+
+  .btn-add {
+    background-color: var(--DayBackground);
+    margin: 7px;
+    padding: 5px 10px;
+    width: 32vh;
+    border-radius: 8px;
+    border: solid 1px var(--Color2);
+    text-align: center;
+    font-size: 22px;
+    color: var(--Color2);
+  }
+
+  .add-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .btn-adding {
+    background-color: var(--DayBackground);
+    margin: 7px;
+    padding: 5px 10px;
+    width: 30vh;
+    border-radius: 8px;
+    border: solid 1px var(--Color2);
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .close-add {
+    color: var(--Color3);
+    font-size: 22px;
+    padding: 4px;
+  }
+
+  .message-container {
+    background-color: var(--DayBackground);
+    color: white;
+    padding: 30px 40px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .message-container > p {
+    font-size: 22px;
+  }
+
+  .name-picker {
+    width: 140px;
+    font-size: 20px;
+    margin: 20px 0px;
+    background-color: var(--DayBackground);
+    color: white;
+    border-style:solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-width: 1px;
+    border-color: var(--ColorBorder);
+  }
+  
+  .btn-save {
+    background-color: var(--DayBackground);
+    color: var(--Color2);
+    width: 100px;
+    font-size: 16px;
+    font: bold;
+    margin: 5px;
+    padding: 7px 15px;
+    float: right;
+    border-radius: 6px;
+    border-width: 2px;
+    border-color: var(--Color2);
+  }
+
+  .btn-delete {
+    background-color: var(--DayBackground);
+    color: var(--Color3);
+    width: 100px;
+    font-size: 16px;
+    font: bold;
+    margin: 5px;
+    padding: 7px 15px;
+    float: right;
+    border-radius: 6px;
+    border-width: 2px;
+    border-color: var(--Color3);
+  }
+
+  .btn-cancel {
+    background-color: var(--DayBackground);
+    color: var(--ColorBorder1);
+    width: 100px;
+    font-size: 16px;
+    font: bold;
+    margin: 5px;
+    padding: 7px 15px;
+    float: right;
+    border-radius: 6px;
+    border-width: 2px;
+    border-color: var(--ColorBorder1);
+  }
+
+  .del-name {
+    margin: 20px 5px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .msg {
+    color: var(--ColorBorder1);
+    margin: 20px 10px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    
+  
+  }
