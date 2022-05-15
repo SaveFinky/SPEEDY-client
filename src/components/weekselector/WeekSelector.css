@@ -1,5 +1,7 @@
 :root {
   --weekHeight: 11vh;
+  color-scheme: light dark; /* both supported */
+  
 }
 
 .main-page{
