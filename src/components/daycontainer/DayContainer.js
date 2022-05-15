@@ -5,25 +5,70 @@ import Day from'./Day';
 
 import Axios from "axios";
 
+//   preloader
+import Lottie from "react-lottie";
+import * as pizza from "../preloader/pizza.json";
+import * as success from "../preloader/success.json";
+
+const defaultOptions1 = {
+    loop: true,
+    autoplay: true,
+    animationData: pizza.default,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  
+  const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: success.default,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
 function DayContainer(props) {
     const DAY = ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
 
     const [days, setDays] = useState(initDays(props.selected));
-    const [names, setNames] = useState(props.names);
+    const [names, setNames] = useState([]);
     const [selected, setSelected] = useState(props.selected);
     const [ft, setFT] = useState(true);
+    const [readyName,setRN] = useState(false);
+    const [readyDays,setRD] = useState(false);
+    //proloader
+    const [loading, setloading] = useState(undefined);
+    const [completed, setcompleted] = useState(undefined);
     
 
     useEffect( () => {
-        console.log("useEffect");
-        if(selected != props.selected || ft){
+        //first time
+        if(ft){
             setFT(false);
+            getNameFromAPI();
+            setDaysFromAPI(initDays(props.selected),props.selected);
+
+       }
+       //Change props
+       if(selected != props.selected){
             setSelected(props.selected);
             setDaysFromAPI(initDays(props.selected),props.selected);
-        }
-    });
+       }
 
-    
+        setTimeout(() => {
+            if(readyName && readyDays)
+                setloading(true);
+
+            setTimeout(() => {
+                setcompleted(true);
+                props.recCompleted();
+            }, 2000);
+        }, 3000);
+        
+      });
+
+
     function initDays(selected){
         let day = [];
         let date = new Date(selected);
@@ -36,7 +81,6 @@ function DayContainer(props) {
     }
 
     function setDaysFromAPI(dbDay,start){
-        console.log("setDaysFromAPI");
         var show = [];
         let day = new Date(start);
         for(let j=0;j<7;j++){
@@ -60,6 +104,20 @@ function DayContainer(props) {
             });
         }).then(() => {
             setDays(dbDay);
+            setRD(true);
+        });
+    }
+
+    function getNameFromAPI(){
+        var name=[];
+        let k=0;
+        Axios.get("https://speedyapp.herokuapp.com/getName").then((response) => {
+            response.data.map( record => {
+                name[k++]=record.name
+            });
+        }).then(() => {
+            setNames(name);
+            setRN(true);
         });
     }
     
@@ -84,22 +142,39 @@ function DayContainer(props) {
     }
 
     return (
-        <div className="days-container">
-            {days.map(day =>
-                <Day  
-                    key={day.id}
-                    dayText={DAY[day.id]}
-                    day={day.day}
-                    index={day.id}
-                    firstname={day.firstname}
-                    secondname={day.secondname}
-                    excname={day.excname}
-                    names={names}
-                    onClick={addDay.bind(this)}
-                    >
-                </Day> 
-             )}
-        </div>
+        <>
+            {!completed ? (
+                <div className="load-container">
+                    <div>
+                        {!loading ? (
+                            <Lottie options={defaultOptions1} height={200} width={200} />
+                        ) : (
+                            <div className='success-container'>
+                                <Lottie options={defaultOptions2} height={100} width={100} />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ) : (
+               <div className="days-container">
+                    {days.map(day =>
+                        <Day  
+                            key={day.id}
+                            dayText={DAY[day.id]}
+                            day={day.day}
+                            index={day.id}
+                            firstname={day.firstname}
+                            secondname={day.secondname}
+                            excname={day.excname}
+                            names={names}
+                            onClick={addDay.bind(this)}
+                            >
+                        </Day> 
+                    )}
+                </div>
+            )} 
+        </>
+        
     );
 }
 

@@ -64,7 +64,9 @@ function Day(props) {
               </div>
             </div>  
           }
-          {//------------------------------- SELECTED
+
+
+          {//#################################       SELECTED
           selected === true && 
             <div>
               <div className="Day-icon"  >
@@ -90,7 +92,7 @@ function Day(props) {
                   >
                       <option value="DEFAULT" disabled selected hidden>{firstname}</option>
                       <option value="" ></option>
-                      {names.map(name =>
+                      {names.map( name =>
                         name!=excname?<option key={name} value={name}>{name}</option>:""
                       )};
                   </select>

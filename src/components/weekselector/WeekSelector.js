@@ -1,26 +1,26 @@
-import React, { Component} from 'react';
+import React, { useEffect, useState } from "react";
 import '../../App.css';
 import DayContainer from '../daycontainer/DayContainer';
 import './WeekSelector.css';
 import Week from './Week';
 
 
-//-------------
-import Names from '../../data/name.json';
+function WeekSelector() {
+    //const MONTH = ['Gen','Feb','Mar','Apr','Mag','Giu','Lul','Ago','Set','Ott','Nov','Dic'];
+    //const DAY = ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+    
+    //[weeks,selected]
+    const [weekState, setWeeks] = useState(getWeekDate());
+    const [completed, setcompleted] = useState(false);
 
-class WeekSelector extends Component{
-    MONTH = ['Gen','Feb','Mar','Apr','Mag','Giu','Lul','Ago','Set','Ott','Nov','Dic'];
-    DAY = ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+    function prevMonth(){
+        var weeks = [[],null];
 
-    state = {  
-        //[weeks,selected]
-        weeks: this.getWeekDate(),//WEEKS
-
-        Names:this.getName()
-    }; 
-
-    prevMonth(){
-        let weeks = this.state.weeks;
+        for(let i=0;i<4;i++){
+            weeks[0][i]= weekState[0][i];
+        }
+        weeks[1]=weekState[1];
+        
         for(let i=3;i>0;i--){
             weeks[0][i]=weeks[0][i-1];
             weeks[0][i].id++;
@@ -40,11 +40,17 @@ class WeekSelector extends Component{
             type='btn--outline';
 
         weeks[0][0]={id:1,firstday:firstday,secondday:secondday,ck:type};
-        this.setState({weeks:weeks})
+        setWeeks(weeks);
     }
     
-    nextMonth(){
-        let weeks = this.state.weeks;
+    function nextMonth(){
+        var weeks = [[],null];
+
+        for(let i=0;i<4;i++){
+            weeks[0][i]= weekState[0][i];
+        }
+        weeks[1]=weekState[1];
+
         for(let i=0;i<3;i++){
             weeks[0][i]=weeks[0][i+1];
             weeks[0][i].id--;
@@ -63,21 +69,24 @@ class WeekSelector extends Component{
         let secondday = new Date(newWeek);
 
         weeks[0][3]={id:4,firstday:firstday,secondday:secondday,ck:type};
-        this.setState({weeks:weeks})
+        setWeeks(weeks);
     }
 
-    selectDay(index) {
-        let week = this.state.weeks;
+    function selectDay(index) {
+        var week = [[],null];
 
-        for(let i=0;i<4;i++)
+        for(let i=0;i<4;i++){
+            week[0][i]= weekState[0][i];
             week[0][i].ck = 'btn--outline';
-        
+        }
+            
         week[0][index].ck = 'btn--primary';
-        week[1]=new Date(this.state.weeks[0][index].firstday);
-        this.setState({weeks:week});
+        week[1]=new Date(weekState[0][index].firstday);
+        
+        setWeeks(week);
     }
 
-    getWeekDate(){
+    function getWeekDate(){
         let newWeek = new Date();
        
         let dayOfWeekNumber = newWeek.getDay();
@@ -106,42 +115,38 @@ class WeekSelector extends Component{
         return  [weeks,selected];
     }
 
-    getName(){
-        var arr = [];
-        Names.map( names => {
-            if(names.Name !== 'undefined')
-                arr.push(names.Name);
-        });
-        return arr;
+    function recCompleted() {
+        setcompleted(true);
     }
 
-    render(){
-         return (
-            <div className='main-page'>
-                <div className='week-container'>
-                    <div className='ar-con-left'>
-                        <i className="arrow left" onClick={this.prevMonth.bind(this)}></i>
+    return (
+        <div className='main-page'>
+            { completed && 
+               <>
+                    <div className='week-container'>
+                        <div className='ar-con-left' 
+                            onClick={ prevMonth.bind(this)}>
+                            <i className="arrow left" ></i>
+                        </div>
+                        <Week  
+                            week={weekState[0]}
+                            onClick={selectDay.bind(this)}
+                        />
+                        <div className='ar-con-right' 
+                            onClick={ nextMonth.bind(this)}>
+                            <i className="arrow right" ></i>
+                        </div>
                     </div>
-                    <Week  
-                        week={this.state.weeks[0]}
-                        onClick={this.selectDay.bind(this)}
-                    />
-                    <div className='ar-con-right'>
-                        <i className="arrow right" onClick={this.nextMonth.bind(this)}></i>
-                    </div>
-                    
-                    
-                </div>
-                <hr className='foot'></hr>
-                <DayContainer 
-                    days={{id:1,day:(new Date()),firstname:"",secondname:""}}
-                    names={this.state.Names}
-                    selected={this.state.weeks[1]}
-                    />
-            </div>
-        );
-    }
-
+                    <hr className='foot'></hr>
+               </>
+            }
+            <DayContainer 
+                days={{id:1,day:(new Date()),firstname:"",secondname:""}}
+                selected={weekState[1]}
+                recCompleted={recCompleted.bind(this)}
+                />
+        </div>
+    );
 }
 
 export default WeekSelector;
