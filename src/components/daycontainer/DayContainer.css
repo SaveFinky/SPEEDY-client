@@ -100,15 +100,14 @@
   font: bold;
   margin-right: 20px;
   margin-top: 15px;
-  padding-right: 10px;
-  padding-top: 4px;
-  padding-left: 10px;
-  padding-bottom: 4px;
+  padding: 4px 0px;
   float: right;
   border-radius: 6px;
   border-width: 1px;
   border-color:  white;
+  width: 11vh;
 }
+
 
 .days-container .day-div .line .NamePicker {
   width: 140px;
@@ -166,4 +165,10 @@
     max-width: none;
   }
 
+}
+
+@media (prefers-color-scheme: dark) {
+  .days-container.dark-scheme   { background: var(--DayBackground);  }
+  .load-container.dark-scheme   { background: var(--DayBackground);  }
+  .day-div.dark-scheme { background: var(--Background); }
 }

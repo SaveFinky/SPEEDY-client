@@ -1,7 +1,6 @@
 :root {
   --weekHeight: 11vh;
-  color-scheme: light dark; /* both supported */
-  
+  color-scheme: light dark; 
 }
 
 .main-page{
@@ -80,4 +79,8 @@ hr{
     top: 50px;
   }
 
+}
+
+@media (prefers-color-scheme: dark) {
+  .week-container.dark-scheme   { background:  #232323;  }
 }

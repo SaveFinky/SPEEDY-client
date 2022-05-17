@@ -39,7 +39,7 @@ function DayContainer(props) {
     const [readyDays,setRD] = useState(false);
     //proloader
     const [loading, setloading] = useState(undefined);
-    const [completed, setcompleted] = useState(undefined);
+    const [completed, setcompleted] = useState(false);
     
 
     useEffect( () => {
@@ -56,15 +56,22 @@ function DayContainer(props) {
             setDaysFromAPI(initDays(props.selected),props.selected);
        }
 
-        setTimeout(() => {
-            if(readyName && readyDays)
-                setloading(true);
-
+       if(!completed){
             setTimeout(() => {
-                setcompleted(true);
-                props.recCompleted();
-            }, 2000);
-        }, 3000);
+                if(readyName && readyDays){
+
+                    setloading(true);
+
+                    setTimeout(() => {
+                        setcompleted(true);
+                        console.log("SET completed true : RName:"+readyName+" RDays:"+readyDays);
+                        props.recCompleted();
+                    }, 2000);
+                }
+                    
+            }, 3000);
+       }
+        
         
       });
 
